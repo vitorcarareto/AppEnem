@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_cadastrarUsuario"
+            android:icon="@drawable/cadastrar"
+            android:title="Cadastrar Usuário" />
+        <item
+            android:id="@+id/nav_fazerSimulado"
+            android:icon="@drawable/simulado"
+            android:title="Fazer Simulado" />
+        <item
+            android:id="@+id/nav_verAcertos"
+            android:icon="@drawable/acertos"
+            android:title="Ver Acertos" />
+        <item
+            android:id="@+id/nav_cadastroQuestoes"
+            android:icon="@drawable/cadastroquestoes"
+            android:title="Cadastro de Questões" />
+        <item
+            android:id="@+id/nav_sair"
+            android:icon="@drawable/saindo"
+            android:title="@string/sair" />
+    </group>
+
+
+</menu>

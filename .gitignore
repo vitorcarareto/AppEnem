@@ -1,0 +1,22 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+# SVN
+.svn
+
+# Dropbox
+*.dropbox.attr
+
+# PyCharm
+.idea
+
+# Outros
+*.log
+
+Outros/
+django_venv/
+
+tmp_*
+etls/etl_to_redshift/files/
+etls/geracao/files/

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".View.CadastrarUsuario">
+
+    <TextView
+        android:id="@+id/txtCadUsuarios"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="19dp"
+        android:text="@string/cadastrar_usu_rios"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/txtNome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="66dp"
+        android:layout_marginTop="112dp"
+        android:text="@string/nome"
+        android:textColor="@android:color/black"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/edtNome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/txtNome"
+        android:layout_marginStart="0dp"
+        android:layout_marginBottom="-8dp"
+        android:layout_toEndOf="@+id/txtNome"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:autofillHints="" />
+
+    <TextView
+        android:id="@+id/txtEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/txtNome"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="163dp"
+        android:text="@string/e_mail"
+        android:textColor="@android:color/black"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/edtEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edtNome"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="14dp"
+        android:layout_toEndOf="@+id/txtNome"
+        android:ems="10"
+        android:inputType="textPersonName" />
+
+    <TextView
+        android:id="@+id/txtCelular"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="219dp"
+        android:layout_marginEnd="-1dp"
+        android:layout_toStartOf="@+id/edtEmail"
+        android:text="@string/celular"
+        android:textColor="@android:color/black"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/edtCelular"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/edtEmail"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="205dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:autofillHints="" />
+
+    <Button
+        android:id="@+id/btnCadastrar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="112dp"
+        android:text="CADASTRAR" />
+</RelativeLayout>
