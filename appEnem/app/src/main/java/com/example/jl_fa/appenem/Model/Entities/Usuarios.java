@@ -7,12 +7,21 @@ public class Usuarios {
     private String email;
     private String celular;
     private int qdeAcertos;
+    private int id;
 
     public Usuarios() {
         this.nome = null;
         this.email = null;
         this.celular = null;
         this.qdeAcertos = 0;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNome() {

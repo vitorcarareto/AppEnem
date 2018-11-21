@@ -11,4 +11,6 @@
     <string name="nome">Nome:</string>
     <string name="e_mail">E-Mail:</string>
     <string name="celular">Celular:</string>
+    <string name="cadastro_de_questoes">Cadastro de Questões</string>
+    <string name="textview">TextView</string>
 </resources>

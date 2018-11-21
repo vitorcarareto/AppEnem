@@ -63,7 +63,7 @@
         android:layout_marginTop="14dp"
         android:layout_toEndOf="@+id/txtNome"
         android:ems="10"
-        android:inputType="textPersonName" />
+        android:inputType="textEmailAddress" />
 
     <TextView
         android:id="@+id/txtCelular"
@@ -85,7 +85,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="205dp"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="phone"
         android:autofillHints="" />
 
     <Button
