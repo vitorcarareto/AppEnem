@@ -22,7 +22,10 @@ public class UsuarioModel extends SQLiteOpenHelper {
         //String SQL para criar a tabela no banco de dados, caso o banco não exista
         String sqlCriarTabelaUsuario =
                 "CREATE TABLE usuarios (" + "_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                        "nome TEXT NOT NULL, " + "email TEXT NOT NULL UNIQUE, " + "celular TEXT NOT NULL " + ")";
+                        "nome TEXT NOT NULL, " +
+                        "email TEXT NOT NULL UNIQUE, " +
+                        "celular TEXT NOT NULL " +
+                        ")";
 
         db.execSQL(sqlCriarTabelaUsuario);
     }

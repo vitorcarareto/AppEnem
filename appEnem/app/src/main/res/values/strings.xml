@@ -2,8 +2,6 @@
     <string name="app_name">appEnem</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_sair">Sair</string>
     <string name="sair">Sair</string>
@@ -11,6 +9,12 @@
     <string name="nome">Nome:</string>
     <string name="e_mail">E-Mail:</string>
     <string name="celular">Celular:</string>
-    <string name="cadastro_de_questoes">Cadastro de Questões</string>
+    <string name="cadastro_de_quest_es">Cadastro de Questões</string>
     <string name="textview">TextView</string>
+    <string-array name="disciplinas">
+        <item>Ciências da Natureza</item>
+        <item>Ciências Humanas</item>
+        <item>Linguagens e Códigos</item>
+        <item>Matemática</item>
+    </string-array>
 </resources>

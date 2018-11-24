@@ -24,7 +24,6 @@ import com.example.jl_fa.appenem.View.VerAcertos;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    public static ArrayAdapter<Usuarios> usuarios;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
