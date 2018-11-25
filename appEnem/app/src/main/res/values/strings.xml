@@ -11,6 +11,8 @@
     <string name="celular">Celular:</string>
     <string name="cadastro_de_quest_es">Cadastro de Questões</string>
     <string name="textview">TextView</string>
+    <string name="nav_header_title">Android</string>
+    <string name="nav_header_subtitle">android@android.com</string>
     <string-array name="disciplinas">
         <item>Ciências da Natureza</item>
         <item>Ciências Humanas</item>
