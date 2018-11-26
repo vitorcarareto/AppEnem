@@ -71,23 +71,24 @@ public class CadastroQuestoes extends AppCompatActivity {
 
                 cadQuestoes.setAlternativaCerta(idx);
 
-                if (crudQuestao.insertQuestoes(cadQuestoes)) {
-                    Toast.makeText(CadastroQuestoes.this, "Questão Cadastrada", Toast.LENGTH_SHORT).show();
-
-
+                if (idx < 0) {
+                    Toast.makeText(CadastroQuestoes.this, "Selecione a alternativa correta.", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(CadastroQuestoes.this, "Questão Não Cadastrada", Toast.LENGTH_SHORT).show();
+                    if (crudQuestao.insertQuestoes(cadQuestoes)) {
+
+                        edtEnunciado.getText().clear();
+                        edtAutA.getText().clear();
+                        edtAutB.getText().clear();
+                        edtAutC.getText().clear();
+                        edtAutD.getText().clear();
+                        edtAutE.getText().clear();
+
+                        Toast.makeText(CadastroQuestoes.this, "Questão Cadastrada", Toast.LENGTH_SHORT).show();
+
+                    } else {
+                        Toast.makeText(CadastroQuestoes.this, "Questão Não Cadastrada", Toast.LENGTH_SHORT).show();
+                    }
                 }
-
-                edtEnunciado.getText().clear();
-                edtAutA.getText().clear();
-                edtAutB.getText().clear();
-                edtAutC.getText().clear();
-                edtAutD.getText().clear();
-                edtAutE.getText().clear();
-
-
-
             }
         });
     }

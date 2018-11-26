@@ -102,11 +102,11 @@ public class MainActivity extends AppCompatActivity
             Intent intent = new Intent(MainActivity.this, FazerSimulado.class);
             startActivity(intent);
         }else if (id == R.id.nav_verAcertos){
-            Intent intent = new Intent(MainActivity.this,VerAcertos.class);
+            Intent intent = new Intent(MainActivity.this, VerAcertos.class);
             startActivity(intent);
 
         }else if (id == R.id.nav_cadastroQuestoes) {
-            Intent intent = new Intent(MainActivity.this,CadastroQuestoes.class);
+            Intent intent = new Intent(MainActivity.this, CadastroQuestoes.class);
             startActivity(intent);
 
         }else if (id == R.id.nav_sair){

@@ -31,7 +31,7 @@ public class QuestoesModel extends SQLiteOpenHelper {
                         "alternativaD TEXT NOT NULL, " +
                         "alternativaE TEXT NOT NULL, " +
                         "alternativaCerta integer NOT NULL, " +
-                        "respostaUsuario TEXT " +
+                        "respostaUsuario integer " +
                         ")";
 
         db.execSQL(sqlCriarTabelaQuestoes);
@@ -81,7 +81,7 @@ public class QuestoesModel extends SQLiteOpenHelper {
 
         SQLiteDatabase db = getReadableDatabase();
 
-        String sqlSelectTodos = "SELECT * FROM questoes";
+        String sqlSelectTodos = "SELECT * FROM questoes ORDER BY RANDOM()";
 
         Cursor cursor = null;
         try {

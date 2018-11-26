@@ -29,6 +29,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FazerSimulado extends AppCompatActivity {
+    public static int questaoAtual = 0;
+    public static Questoes questao;
+    ArrayList<Questoes> questoes = new ArrayList<>();
+    int qtd_questoes = 0;
 
     TextView txtDisciplina;
     TextView txtEnunciado;
@@ -36,19 +40,14 @@ public class FazerSimulado extends AppCompatActivity {
     RadioGroup radioAlternativas;
     Button btnResponderQuestao;
     private Cursor cursor;
-    Questoes quest;
-    Integer nrQuest;
+//    Questoes quest;
+//    Integer nrQuest;
 
     RadioButton RbA;
     RadioButton RbB;
     RadioButton RbC;
     RadioButton RbD;
     RadioButton RbE;
-
-
-    ////// tentando
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,75 +66,101 @@ public class FazerSimulado extends AppCompatActivity {
         RbD = (RadioButton) findViewById(R.id.rdtSD);
         RbE = (RadioButton) findViewById(R.id.rdtSE);
 
-        // TODO Get todas as questões
-        // quest = new Questoes();
-        //cursor = Cursor = nil
-
+        // Get todas as questões
         final QuestoesModel questoesModel = new QuestoesModel(FazerSimulado.this);
-
-
         cursor = questoesModel.selectTodasQuestoes();
-        if (cursor.getCount() > 0) {
 
-            for(int i = 0; i < cursor.getCount(); i++) {
+        qtd_questoes = cursor.getCount();
 
+        for(int i = 0; i < cursor.getCount(); i++) {
+            // Criar Questão e adicionar na lista de questões
+            Questoes q = new Questoes();
 
-                txtDisciplina.setText(cursor.getString(1));
-                txtEnunciado.setText(cursor.getString(2));
-                RbA.setText(cursor.getString(3));
-                RbB.setText(cursor.getString(4));
-                RbC.setText(cursor.getString(5));
-                RbD.setText(cursor.getString(6));
-                RbE.setText(cursor.getString(7));
+            q.setId(cursor.getInt(0));
+            q.setArea(cursor.getString(1));
+            q.setPergunta(cursor.getString(2));
+            q.setAlternativaA(cursor.getString(3));
+            q.setAlternativaB(cursor.getString(4));
+            q.setAlternativaC(cursor.getString(5));
+            q.setAlternativaD(cursor.getString(6));
+            q.setAlternativaE(cursor.getString(7));
 
-
-                btnResponderQuestao.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-
-                        int radioButtonID = radioAlternativas.getCheckedRadioButtonId();
-                        View radioButton = radioAlternativas.findViewById(radioButtonID);
-                        int idx = radioAlternativas.indexOfChild(radioButton);
-
-                        System.out.println(idx);
-
-                        if (idx < 0) {
-                            Toast.makeText(getApplicationContext(), "Selecione uma alternativa.", Toast.LENGTH_SHORT).show();
-                        } else {
-                            // TODO Guardar resposta do usuário
-
-                            quest = new Questoes();
-
-                            quest.setId(Integer.parseInt(cursor.getString(0)));
-                            System.out.println(quest.getId());
-
-
-                            quest.setAlternativaCerta(Integer.parseInt(cursor.getString(8)));
-                            System.out.println(quest.getAlternativaCerta());
-
-
-                            quest.setRespostaUsuario(Integer.toString(idx));
-                            System.out.println(quest.getRespostaUsuario());
-
-                            if (quest.getAlternativaCerta() == Integer.parseInt(quest.getRespostaUsuario())) {
-                                Toast.makeText(getApplicationContext(), "Resposta Certa", Toast.LENGTH_SHORT).show();
-                                questoesModel.updateQuestaoUsuario(quest);
-                            } else {
-                                Toast.makeText(getApplicationContext(), "Resposta Errada, Correta = " + quest.getAlternativaCerta(), Toast.LENGTH_SHORT).show();
-                            }
-
-                        }
-                    }
-                });
-
-                cursor.moveToNext();
-
-            }
-
-            /*Toast.makeText(getApplicationContext(), "Simulado Finalizado", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(FazerSimulado.this,MainActivity.class);
-            startActivity(intent);*/
+            questoes.add(q);
+            cursor.moveToNext();
         }
 
+        btnResponderQuestao.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                int radioButtonID = radioAlternativas.getCheckedRadioButtonId();
+                View radioButton = radioAlternativas.findViewById(radioButtonID);
+                int idx = radioAlternativas.indexOfChild(radioButton);
+
+                System.out.println("Alternativa selecionada: " + Integer.toString(idx));
+
+                if (idx < 0) {
+                    Toast.makeText(getApplicationContext(), "Selecione uma alternativa.", Toast.LENGTH_SHORT).show();
+                } else {
+                    // Guardar resposta do usuário
+                    questao.setRespostaUsuario(idx);
+                    questoesModel.updateQuestaoUsuario(questao);
+
+                    if (questao.getAlternativaCerta() == questao.getRespostaUsuario()) {
+                        System.out.println("Resposta correta: " + Integer.toString(questao.getAlternativaCerta()));
+                        Toast.makeText(getApplicationContext(), "Resposta Correta", Toast.LENGTH_SHORT).show();
+                    } else {
+                        // Não dizer a alternativa correta para o usuário (facilita muito)
+                        // SE for mostrar a correta para o usuário, converter de (0, 1, ...) para (A, B, ...)
+                        System.out.println("Responsta incorreta: " + Integer.toString(idx) + ". Correta: " + Integer.toString(questao.getAlternativaCerta()));
+                        Toast.makeText(getApplicationContext(), "Resposta Incorreta", Toast.LENGTH_SHORT).show();
+                    }
+
+                    // Carregar nova questão
+                    carregarQuestao();
+
+                }
+            }
+        });
+
+        carregarQuestao();
+
+    }
+
+    public void carregarQuestao() {
+        // Verificar se existem questões
+        if (qtd_questoes > 0) {
+            // TODO Verificar se não chegou no final do simulado (obs: não testei este "if" abaixo, mas acho que funcionará)
+            if (questaoAtual < questoes.size()) {
+                // Carregar próxima questão
+                System.out.println(Integer.toString(qtd_questoes) + " questões encontradas.");
+
+                questao = questoes.get(questaoAtual);
+
+                txtDisciplina.setText(questao.getArea());
+                txtEnunciado.setText(questao.getPergunta());
+                RbA.setText(questao.getAlternativaA());
+                RbB.setText(questao.getAlternativaB());
+                RbC.setText(questao.getAlternativaC());
+                RbD.setText(questao.getAlternativaD());
+                RbE.setText(questao.getAlternativaE());
+
+            } else {
+                // Finalizar simulado
+                Toast.makeText(getApplicationContext(), "Simulado Finalizado", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(FazerSimulado.this, MainActivity.class);
+                startActivity(intent);
+            }
+        } else {
+            // Nenhuma questão cadastrada, limpar tela
+            Toast.makeText(getApplicationContext(), "Nenhuma questão encontrada.", Toast.LENGTH_SHORT).show();
+            txtDisciplina.setText("");
+            RbA.setText("");
+            RbB.setText("");
+            RbC.setText("");
+            RbD.setText("");
+            RbE.setText("");
+            btnResponderQuestao.setVisibility(View.GONE);
+        }
     }
 }

@@ -9,7 +9,7 @@ public class Questoes {
     private String alternativaD;
     private String alternativaE;
     private int alternativaCerta;
-    private String respostaUsuario;
+    private int respostaUsuario;
     private int id;
 
     public Questoes() {
@@ -20,8 +20,8 @@ public class Questoes {
         this.alternativaE = null;
         this.area = null;
         this.pergunta = null;
-        this.alternativaCerta = 0;
-        this.respostaUsuario = null;
+        this.alternativaCerta = -1;
+        this.respostaUsuario = -1;
     }
 
     public String getArea() {
@@ -48,11 +48,11 @@ public class Questoes {
         this.alternativaCerta = alternativaCerta;
     }
 
-    public String getRespostaUsuario() {
+    public int getRespostaUsuario() {
         return respostaUsuario;
     }
 
-    public void setRespostaUsuario(String respostaUsuario) {
+    public void setRespostaUsuario(int respostaUsuario) {
         this.respostaUsuario = respostaUsuario;
     }
 
