@@ -1,6 +1,5 @@
 package com.example.jl_fa.appenem.View;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -65,15 +64,12 @@ public class CadastroQuestoes extends AppCompatActivity {
                 cadQuestoes.setAlternativaD(edtAutD.getText().toString());
                 cadQuestoes.setAlternativaE(edtAutE.getText().toString());
 
+
                 int radioButtonId = radioAlternativas.getCheckedRadioButtonId();
                 View radioButton = radioAlternativas.findViewById(radioButtonId);
                 int idx = radioAlternativas.indexOfChild(radioButton);
 
                 cadQuestoes.setAlternativaCerta(idx);
-
-
-
-
 
                 if (crudQuestao.insertQuestoes(cadQuestoes)) {
                     Toast.makeText(CadastroQuestoes.this, "Questão Cadastrada", Toast.LENGTH_SHORT).show();

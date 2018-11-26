@@ -9,7 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class UsuarioModel extends SQLiteOpenHelper {
     private static final String DBNAME = "DBENEM";
-    private static final int VERSAO = 1;
+    private static final int VERSAO = 15;
 
     public UsuarioModel(Context context)
     {

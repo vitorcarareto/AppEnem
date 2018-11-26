@@ -9,12 +9,13 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class QuestoesModel extends SQLiteOpenHelper {
     private static final String DBNAME = "DBENEM";
-    private static final int VERSAO = 4;
+    private static final int VERSAO = 16;
 
     public QuestoesModel(Context context)
     {
         super(context, DBNAME, null,VERSAO);
     }
+
 
     @Override
     public void onCreate(SQLiteDatabase db){
@@ -83,16 +84,16 @@ public class QuestoesModel extends SQLiteOpenHelper {
         String sqlSelectTodos = "SELECT * FROM questoes";
 
         Cursor cursor = null;
-        try{
+        try {
             cursor = db.rawQuery(sqlSelectTodos,null);
             if(cursor.getCount() > 0)
             {
                 cursor.moveToFirst();
                 return cursor;
             }
-        }catch(SQLException ex){
+        } catch(SQLException ex){
             ex.printStackTrace();
-        }finally {
+        } finally {
             db.close();
         }
         return cursor;
@@ -112,11 +113,13 @@ public class QuestoesModel extends SQLiteOpenHelper {
                 q = new Questoes();
 
                 q.setId(cursor.getInt(0));
-                q.setAlternativaA(cursor.getString(1));
-                q.setAlternativaB(cursor.getString(2));
-                q.setAlternativaC(cursor.getString(3));
-                q.setAlternativaD(cursor.getString(3));
-                q.setAlternativaE(cursor.getString(3));
+                q.setArea(cursor.getString(1));
+                q.setPergunta(cursor.getString(2));
+                q.setAlternativaA(cursor.getString(3));
+                q.setAlternativaB(cursor.getString(4));
+                q.setAlternativaC(cursor.getString(5));
+                q.setAlternativaD(cursor.getString(6));
+                q.setAlternativaE(cursor.getString(7));
             }
         }catch (SQLException ex){
             ex.printStackTrace();
@@ -185,6 +188,25 @@ public class QuestoesModel extends SQLiteOpenHelper {
             return false;
         }
 
+    }
+
+    public boolean updateQuestaoUsuario(Questoes questao){
+        boolean retorno = false;
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put("respostaUsuario", questao.getRespostaUsuario());
+
+
+        try{
+            db.update("questoes",contentValues, "_id = " + questao.getId(), null);
+            retorno = true;
+        }catch(SQLException ex){
+            ex.printStackTrace();
+        }finally {
+            db.close();
+        }
+        return retorno;
     }
 
 }

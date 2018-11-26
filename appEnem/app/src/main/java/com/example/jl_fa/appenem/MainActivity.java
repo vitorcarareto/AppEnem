@@ -1,6 +1,7 @@
 package com.example.jl_fa.appenem;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -14,7 +15,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
+import android.widget.Toast;
 
+import com.example.jl_fa.appenem.Model.Entities.QuestoesModel;
 import com.example.jl_fa.appenem.Model.Entities.Usuarios;
 import com.example.jl_fa.appenem.View.CadastrarUsuario;
 import com.example.jl_fa.appenem.View.CadastroQuestoes;
@@ -96,9 +99,8 @@ public class MainActivity extends AppCompatActivity
             startActivity(intent);
 
         }else if (id == R.id.nav_fazerSimulado){
-            Intent intent = new Intent(MainActivity.this,FazerSimulado.class);
+            Intent intent = new Intent(MainActivity.this, FazerSimulado.class);
             startActivity(intent);
-
         }else if (id == R.id.nav_verAcertos){
             Intent intent = new Intent(MainActivity.this,VerAcertos.class);
             startActivity(intent);
