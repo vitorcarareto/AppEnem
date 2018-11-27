@@ -53,7 +53,10 @@ public class FazerSimulado extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fazer_simulado);
+        
         //Inicializacao das listas e do count
+        questaoAtual = 0;
+        questoes = new ArrayList<>();
 
         txtDisciplina = (TextView) findViewById(R.id.txtDisciplinaSimulado);
         txtEnunciado = (TextView) findViewById(R.id.txtEnunciadoSimulado);
@@ -130,7 +133,7 @@ public class FazerSimulado extends AppCompatActivity {
     public void carregarQuestao() {
         // Verificar se existem questões
         if (qtd_questoes > 0) {
-            // TODO Verificar se não chegou no final do simulado (obs: não testei este "if" abaixo, mas acho que funcionará)
+            // Verificar se não chegou no final do simulado
             if (questaoAtual < questoes.size()) {
                 // Carregar próxima questão
                 System.out.println(Integer.toString(qtd_questoes) + " questões encontradas.");
@@ -144,6 +147,8 @@ public class FazerSimulado extends AppCompatActivity {
                 RbC.setText(questao.getAlternativaC());
                 RbD.setText(questao.getAlternativaD());
                 RbE.setText(questao.getAlternativaE());
+
+                questaoAtual += 1;
 
             } else {
                 // Finalizar simulado
@@ -162,7 +167,5 @@ public class FazerSimulado extends AppCompatActivity {
             RbE.setText("");
             btnResponderQuestao.setVisibility(View.GONE);
         }
-
-        questaoAtual += 1;
     }
 }
