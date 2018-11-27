@@ -162,5 +162,7 @@ public class FazerSimulado extends AppCompatActivity {
             RbE.setText("");
             btnResponderQuestao.setVisibility(View.GONE);
         }
+
+        questaoAtual += 1;
     }
 }

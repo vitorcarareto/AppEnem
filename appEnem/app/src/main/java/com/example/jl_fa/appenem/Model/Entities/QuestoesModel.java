@@ -9,7 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class QuestoesModel extends SQLiteOpenHelper {
     private static final String DBNAME = "DBENEM";
-    private static final int VERSAO = 16;
+    private static final int VERSAO = 17;
 
     public QuestoesModel(Context context)
     {
@@ -67,7 +67,7 @@ public class QuestoesModel extends SQLiteOpenHelper {
 
 
         try{
-            db.insert("questoes",null,contentValues);
+            db.insert("questoes",null, contentValues);
             retorno = true;
         }catch (SQLException ex){
             ex.printStackTrace();
