@@ -15,6 +15,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.jl_fa.appenem.Model.Entities.QuestoesModel;
@@ -24,9 +25,14 @@ import com.example.jl_fa.appenem.View.CadastroQuestoes;
 import com.example.jl_fa.appenem.View.FazerSimulado;
 import com.example.jl_fa.appenem.View.VerAcertos;
 
+import org.w3c.dom.Text;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    private Cursor cursor;
+    TextView Acertos;
+    TextView Erros;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +58,30 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        Acertos = (TextView) findViewById(R.id.lblAcertos);
+        Erros = (TextView) findViewById(R.id.lblErros);
+
+        int nAcertos = 0;
+        int nErros = 0;
+        final QuestoesModel questoesModel = new QuestoesModel(MainActivity.this);
+
+        cursor = questoesModel.selectTodasQuestoes();
+
+         for(int i = 0; i < cursor.getCount(); i++) {
+             System.out.println("Resposta correta: " + cursor.getString(8));
+             System.out.println("Resposta digitada: " + cursor.getString(9));
+
+            if(cursor.getInt(8) == cursor.getInt(9)){
+                nAcertos ++;
+            } else {
+                nErros ++;
+            }
+            cursor.moveToNext();
+        }
+
+        Acertos.setText(Integer.toString(nAcertos));
+        Erros.setText(Integer.toString(nErros));
     }
 
     @Override

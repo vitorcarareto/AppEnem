@@ -1,29 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
 
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".View.Autenticacao">
+    tools:context=".View.Autenticacao"
+    android:orientation="vertical"
+    >
 
-    <LinearLayout
+    <ImageView
+        android:layout_gravity="center"
         android:layout_width="198dp"
         android:layout_height="95dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="0dp"
-        android:layout_marginEnd="96dp"
-        android:background="@drawable/simuladoenem">
-    </LinearLayout>
+        android:background="@drawable/simuladoenem" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="108dp"
         android:text="Autenticação"
         android:textAlignment="center"
         android:textColor="@android:color/black"
@@ -34,9 +28,9 @@
         android:id="@+id/txtEmailAut"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_gravity="center"
+        android:layout_marginTop="20sp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="161dp"
         android:text="E-Mail"
         android:textColor="@android:color/black"
         android:textSize="18sp"
@@ -44,8 +38,9 @@
 
     <EditText
         android:id="@+id/edtEmailAut"
-        android:layout_width="259dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="10sp"
         android:layout_below="@+id/txtEmailAut"
         android:layout_centerHorizontal="true"
         android:ems="10"
@@ -53,11 +48,9 @@
 
     <Button
         android:id="@+id/btnEntrar"
-        android:layout_width="259dp"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="218dp"
+        android:layout_gravity="center"
         android:text="ENTRAR"
         android:textStyle="bold" />
 
@@ -65,9 +58,7 @@
         android:id="@+id/txtOu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="184dp"
+        android:layout_gravity="center"
         android:text="OU"
         android:textColor="@android:color/black"
         android:textSize="18sp"
@@ -75,13 +66,11 @@
 
     <Button
         android:id="@+id/btnCadastrarAut"
-        android:layout_width="258dp"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="114dp"
+        android:layout_gravity="center"
         android:text="CADASTRAR"
         android:textStyle="bold" />
 
 
-</RelativeLayout>
+</LinearLayout>

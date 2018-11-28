@@ -87,6 +87,7 @@ public class FazerSimulado extends AppCompatActivity {
             q.setAlternativaC(cursor.getString(5));
             q.setAlternativaD(cursor.getString(6));
             q.setAlternativaE(cursor.getString(7));
+            q.setAlternativaCerta(cursor.getInt(8));
 
             questoes.add(q);
             cursor.moveToNext();
@@ -106,6 +107,7 @@ public class FazerSimulado extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Selecione uma alternativa.", Toast.LENGTH_SHORT).show();
                 } else {
                     // Guardar resposta do usuário
+
                     questao.setRespostaUsuario(idx);
                     questoesModel.updateQuestaoUsuario(questao);
 
@@ -121,7 +123,6 @@ public class FazerSimulado extends AppCompatActivity {
 
                     // Carregar nova questão
                     carregarQuestao();
-
                 }
             }
         });

@@ -9,7 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class QuestoesModel extends SQLiteOpenHelper {
     private static final String DBNAME = "DBENEM";
-    private static final int VERSAO = 17;
+    private static final int VERSAO = 28;
 
     public QuestoesModel(Context context)
     {
@@ -22,7 +22,8 @@ public class QuestoesModel extends SQLiteOpenHelper {
 
         //String SQL para criar a tabela no banco de dados, caso o banco não exista
         String sqlCriarTabelaQuestoes =
-                "CREATE TABLE questoes (" + "_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "CREATE TABLE questoes (" +
+                        "_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                         "area TEXT NOT NULL, " +
                         "pergunta TEXT NOT NULL, " +
                         "alternativaA TEXT NOT NULL, " +

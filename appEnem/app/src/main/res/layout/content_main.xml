@@ -33,14 +33,14 @@
         />
 
     <TextView
+        android:id="@+id/lblAcertos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="0"
         android:layout_gravity="top"
+        android:text="0"
         android:textAlignment="center"
         android:textSize="25sp"
-        android:textStyle="bold"
-        />
+        android:textStyle="bold" />
 
     <TextView
         android:layout_width="match_parent"
@@ -54,14 +54,14 @@
         />
 
     <TextView
+        android:id="@+id/lblErros"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="0"
         android:layout_gravity="top"
+        android:text="0"
         android:textAlignment="center"
         android:textSize="25sp"
-        android:textStyle="bold"
-        />
+        android:textStyle="bold" />
 
 
 </LinearLayout>
